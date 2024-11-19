@@ -1,0 +1,17 @@
+/* styles.css atau file CSS lainnya */
+.secondary-btn {
+  background-color: #eab308; /* Warna latar belakang */
+  color: black; /* Warna teks */
+
+  border: 1px solid #eab308; /* Border warna yang sama dengan latar belakang */
+}
+
+.secondary-btn:hover {
+  background-color: #eab308 !important; /* Warna saat hover */
+  color: black !important; /* Warna teks */
+  border: 1px solid #eab308 !important;
+}
+.secondary-btn:focus {
+  /* background-color; */
+  box-shadow: none !important;
+}

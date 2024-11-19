@@ -9,11 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        customOrange: "#f0b37e",
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#008080",
+        secondary: "#EAB308",
+        third: "#2E4747",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
 export default config;
