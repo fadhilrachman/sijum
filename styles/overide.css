@@ -1,7 +1,7 @@
 /* styles.css atau file CSS lainnya */
 .secondary-btn {
   background-color: #eab308; /* Warna latar belakang */
-  color: black; /* Warna teks */
+  color: white; /* Warna teks */
 
   border: 1px solid #eab308; /* Border warna yang sama dengan latar belakang */
 }

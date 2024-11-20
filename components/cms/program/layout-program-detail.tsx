@@ -53,25 +53,12 @@ const LayoutProgramDetail: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <div className="bg-neutral-200">
-      <Layout className="max-w-[440px] elative rounded-sm min-h-[100vh] m-auto">
+    <div className="bg-gray-900">
+      <Layout className="max-w-[440px] relative rounded-sm min-h-[100vh] m-auto">
         <Content>
-          <Layout className=" relative bg-white   pb-20 space-y-2">
+          <Layout className=" relative min-h-[100vh] text-gray-400 bg-gray-800  pb-20 space-y-2">
             {children}
           </Layout>
-          <div className="fixed flex   border-t bottom-0 w-[440px] bg-neutral-100 gap-x-4 py-2 px-2 md:px-8">
-            <Button size="large" icon={<EditOutlined />}>
-              Edit Program
-            </Button>
-            <Button
-              type="primary"
-              className="w-full"
-              size="large"
-              icon={<CameraOutlined />}
-            >
-              Tambah Berita
-            </Button>
-          </div>
         </Content>
       </Layout>
     </div>

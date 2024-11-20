@@ -46,23 +46,25 @@ const LayoutCms: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   };
 
   return (
-    <div className="bg-neutral-200">
+    <div className="bg-gray-900 ">
       <Layout className="max-w-[440px] relative rounded-sm min-h-[100vh] m-auto">
         <Content>
-          <Layout className="py-6 px-2 md:px-4 pb-20 space-y-2 bg-white">
+          <Layout className="py-6 min-h-[100vh] px-2 md:px-4 pb-20 space-y-2 text-gray-400 bg-gray-800">
             <div className="flex items-center space-x-4 mb-4">
               <Avatar size={"large"} icon={<UserOutlined />} />
               <div>
-                <p className="text-xs text-gray-700">Fadhil Rahman</p>
+                <p className="text-xs ">Fadhil Rahman</p>
                 <h3 className="font-semibold text-primary ">
                   Keep healthy today
                 </h3>
               </div>
             </div>
-            <h3 className="text-xl capitalize">{pathName.split("/")[2]}</h3>
+            <h3 className="text-xl capitalize text-gray-400">
+              {pathName.split("/")[2]}
+            </h3>
             {children}
           </Layout>
-          <div className="fixed grid grid-cols-4 border-t bottom-0 w-[440px] bg-neutral-100 gap-x-4 py-2 px-2 md:px-8">
+          <div className="fixed grid grid-cols-4  bottom-0 w-[440px] bg-gray-800 text-gray-400 gap-x-4 py-2 px-2 md:px-8">
             {items.map((val, key) => {
               return (
                 <div
@@ -70,7 +72,7 @@ const LayoutCms: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   onClick={() => {
                     handleRouter(val.link);
                   }}
-                  className={`text-center cursor-pointer hover:bg-slate-200 p-1 rounded-md`}
+                  className={`text-center cursor-pointer  p-1 rounded-md`}
                 >
                   <val.icon
                     className={` md:text-xl ${

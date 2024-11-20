@@ -7,9 +7,10 @@ import React from "react";
 
 const Program = () => {
   const router = useRouter();
-  const hanleRoute = (id: number) => {
-    router.push(`/cms/program/${id}`);
+  const hanleRoute = (string: string) => {
+    router.push(string);
   };
+
   return (
     <LayoutCms>
       <div className="space-y-4">
@@ -19,7 +20,13 @@ const Program = () => {
             placeholder="Cari program"
             prefix={<SearchOutlined />}
           />
-          <Button size="middle" type="primary">
+          <Button
+            size="middle"
+            type="primary"
+            onClick={() => {
+              hanleRoute("/cms/program/create");
+            }}
+          >
             Tambah Program
           </Button>
         </div>
@@ -29,14 +36,15 @@ const Program = () => {
               <div
                 key={key}
                 onClick={() => {
-                  hanleRoute(key);
+                  hanleRoute(`/cms/program/${key}`);
                 }}
-                className=" px-2 cursor-pointer space-y-2 md:px-4 py-4 border-b"
+                className=" px-2 text-gray-400 cursor-pointer space-y-2 md:px-4 py-4 border-b border-gray-600"
               >
                 <div className="flex space-x-2 ">
                   <img
                     className="h-24 w-36 rounded-md"
-                    src="https://flowbite.com/docs/images/examples/image-1@2x.jpg"
+                    src="/bg-home.jpg"
+                    // src="https://flowbite.com/docs/images/examples/image-1@2x.jpg"
                     alt=""
                   />
                   <div>

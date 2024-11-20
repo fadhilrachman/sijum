@@ -7,6 +7,37 @@ import React, { useState } from "react";
 
 const Donation = () => {
   const [modal, setModal] = useState({ filter: false });
+  const donations = [
+    {
+      name: "Fadhil Rahman",
+      phone: "+6288102207883",
+      message: "Sehat Selalu kak",
+      amount: "Rp 20.000",
+      time: "7 menit lalu",
+    },
+    {
+      name: "Fadhil Rahman",
+      phone: "+6288102207883",
+      message: "Sehat Selalu kak",
+      amount: "Rp 20.000",
+      time: "7 menit lalu",
+    },
+    {
+      name: "Fadhil Rahman",
+      phone: "+6288102207883",
+      message: "Sehat Selalu kak",
+      amount: "Rp 20.000",
+      time: "7 menit lalu",
+    },
+    {
+      name: "Fadhil Rahman",
+      phone: "+6288102207883",
+      message: "Sehat Selalu kak",
+      amount: "Rp 20.000",
+      time: "7 menit lalu",
+    },
+  ];
+
   return (
     <LayoutCms>
       <div className="space-y-4">
@@ -27,45 +58,45 @@ const Donation = () => {
             Filter
           </Button>
         </div>
-        <div className=" bg-white px-2 md:px-4 py-4 rounded-md">
+        <div className="  px-2 md:px-4 py-4 rounded-md">
           <div className="space-y-2">
-            <div className="space-y-4">
-              {[0, 1, 23, 4].map((val, key) => {
-                return (
-                  <Badge.Ribbon
-                    key={key}
-                    text="Donasi Sijum"
-                    className="absolute -top-5"
-                  >
-                    <div className={`${key != 3 && "border-b"} pb-2`}>
-                      <div className={`flex justify-between items-center   `}>
-                        <div className="flex space-x-2 items-center">
-                          <Avatar size={"default"} icon={<UserOutlined />} />
-                          <div>
-                            <div className="flex items-center space-x-2">
-                              <p className="text-xs">Fadhil Rahman</p>
-                            </div>
-                            <a
-                              href="https://wa.me/62881022077883"
-                              className="text-blue-500 underline"
-                              target="_blank"
-                            >
-                              +62881022077883
-                            </a>
-                          </div>
-                        </div>
-                        <div>
-                          <small className="text-gray-700">7 menit lalu</small>
-                          <h3>Rp 20.000</h3>
-                        </div>{" "}
+            <div className="divide-y divide-gray-700">
+              {donations.map((donation, index) => (
+                <div key={index} className="flex items-start gap-4 p-4">
+                  <div className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white font-semibold">
+                    {donation.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="font-medium text-white">
+                          {donation.name}
+                        </h3>
+                        <p className="text-sm text-blue-400">
+                          {donation.phone}
+                        </p>
                       </div>
-                      <p className="text-neutral-500 text-xs">
-                        Pesan : Sehat Selalu kak
-                      </p>
+                      <div className="flex flex-col items-end">
+                        <button className="px-3 py-1 bg-teal-600 hover:bg-teal-700 text-white text-sm rounded-md transition duration-300 ease-in-out">
+                          Donasi Sijum
+                        </button>
+                        <span className="text-xs text-gray-400 mt-1">
+                          {donation.time}
+                        </span>
+                      </div>
                     </div>
-                  </Badge.Ribbon>
-                );
-              })}
+                    <p className="text-sm text-gray-400 mt-1">
+                      Pesan: {donation.message}
+                    </p>
+                    <p className="text-sm font-medium text-white mt-1">
+                      {donation.amount}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
