@@ -18,6 +18,16 @@ const Provider = ({ children }: React.PropsWithChildren) => {
             fontFamily: `var(${nunito.variable}), var(${roboto.variable}), var(${pacifico.variable})`,
           },
           components: {
+            Card: {
+              colorBgContainer: CONSTANT_PROVIDER.bgColor,
+              colorText: CONSTANT_PROVIDER.textColor,
+              colorTextHeading: CONSTANT_PROVIDER.textColor,
+            },
+            Modal: {
+              colorBgBase: CONSTANT_PROVIDER.bgColor,
+              colorBgContainer: CONSTANT_PROVIDER.bgColor,
+              contentBg: CONSTANT_PROVIDER.bgColor,
+            },
             Input: {
               colorPrimary: "#4B5563",
               colorText: CONSTANT_PROVIDER.textColor,
@@ -30,6 +40,14 @@ const Provider = ({ children }: React.PropsWithChildren) => {
             },
             Checkbox: {
               colorText: CONSTANT_PROVIDER.textColor,
+            },
+            Dropdown: {
+              colorBgBase: CONSTANT_PROVIDER.bgColor,
+              // colorText: CONSTANT_PROVIDER.textColor,
+              colorBgLayout: CONSTANT_PROVIDER.bgColor,
+              colorBgContainer: CONSTANT_PROVIDER.bgColor,
+              colorBgBlur: CONSTANT_PROVIDER.bgColor,
+              colorPrimaryBg: CONSTANT_PROVIDER.bgColor,
             },
             InputNumber: {
               colorPrimary: "#4B5563",

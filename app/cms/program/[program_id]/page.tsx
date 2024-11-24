@@ -9,13 +9,17 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Button, Divider, Progress } from "antd";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React from "react";
 
 const ProgramDetail = () => {
+  const { program_id } = useParams();
   const router = useRouter();
   const handleBack = () => {
     router.back();
+  };
+  const handleRoute = (href: string) => {
+    router.push(href);
   };
   return (
     <LayoutProgramDetail>
@@ -52,6 +56,9 @@ const ProgramDetail = () => {
           type="primary"
           className="w-full"
           size="large"
+          onClick={() => {
+            handleRoute(`/cms/program/${program_id}/upload-news`);
+          }}
           icon={<CameraOutlined />}
         >
           Tambah Berita
