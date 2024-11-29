@@ -1,28 +1,32 @@
+import { Coins, Share, Sofa, UserRoundPlus } from "lucide-react";
 import React from "react";
 import { FaMosque } from "react-icons/fa";
 import { FaBowlRice } from "react-icons/fa6";
 
 const About = () => {
-  const listAbout = ["cuy", "cay", "coy"];
   const listHowToHelp = [
     {
       label: "Ikut Berdonasi",
       description:
         "Dukung dengan donasi uang untuk membantu mereka yang membutuhkan",
+      icon: Coins,
     },
     {
       label: "Jadi Volounteer",
       description:
         "Bergabunglah sebagai relawan untuk membantu langsung di lapangan",
+      icon: UserRoundPlus,
     },
     {
       label: "Berdonasi Barang",
       description:
         "Sumbangkan barang bermanfaat seperti peralatan masak, buku, atau kebutuhan lainnya",
+      icon: Sofa,
     },
     {
       label: "Share Program",
       description: "Bagikan program ini untuk menjangkau lebih banyak orang",
+      icon: Share,
     },
   ];
   return (
@@ -88,19 +92,8 @@ const About = () => {
           <div className=" border-t border-gray-700 pt-4 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
             {listHowToHelp.map((val, key) => {
               return (
-                <div key={key}>
-                  <svg
-                    className="w-10 h-10 mb-2 text-primary md:w-12 md:h-12 "
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
+                <div key={key} className="space-y-2">
+                  <val.icon className="text-primary h-16 w-16" />
                   <h3 className="mb-2 text-2xl font-bold dark:text-white">
                     {val.label}
                   </h3>
