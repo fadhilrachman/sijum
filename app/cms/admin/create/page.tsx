@@ -5,11 +5,11 @@ import { Button, Form, Input } from "antd";
 import BaseButton from "@/components/shared/base-button";
 import { ArrowLeftOutlined, PlusOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
+import FormAdmin from "@/components/cms/admin/form-admin";
 
 const AdminCreate = () => {
   const router = useRouter();
 
-  const [form] = Form.useForm();
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
       return e;
@@ -19,13 +19,6 @@ const AdminCreate = () => {
   const handleBack = () => {
     router.back();
   };
-  const handleSubmit = (value: any) => {
-    const formatedDescription = value.description.replace(/\n/g, "<br/>");
-
-    console.log({ formatedDescription });
-  };
-
-  console.log({ value: Form.useWatch("description", form) });
 
   return (
     <LayoutProgramDetail>
@@ -42,70 +35,7 @@ const AdminCreate = () => {
           />{" "}
           <h3 className="text-xl font-semibold">Buat Admin</h3>
         </div>
-        <Form
-          form={form}
-          name="validateOnly"
-          layout="vertical"
-          onFinish={handleSubmit}
-          className="mt-4"
-          id="form"
-        >
-          <Form.Item
-            name="name"
-            label="Nama "
-            rules={[
-              {
-                required: true,
-                message: "Field ini harus diisi",
-              },
-            ]}
-          >
-            <Input placeholder="Nama" size="large" />
-          </Form.Item>
-          <Form.Item
-            name="email"
-            label="Email"
-            rules={[
-              {
-                required: true,
-                message: "Field ini harus diisi",
-              },
-            ]}
-          >
-            <Input
-              placeholder="Email"
-              size="large"
-              type="email"
-              className="w-full"
-            />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            label="Passsword"
-            rules={[
-              {
-                required: true,
-                message: "Field ini harus diisi",
-              },
-            ]}
-          >
-            <Input.Password
-              placeholder="Password"
-              size="large"
-              type="password"
-              className="w-full"
-            />
-          </Form.Item>
-        </Form>
-        <BaseButton
-          type="primary"
-          size="large"
-          htmlType="submit"
-          form="form"
-          className="w-full"
-        >
-          Submit
-        </BaseButton>
+        <FormAdmin />
       </div>
     </LayoutProgramDetail>
   );

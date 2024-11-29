@@ -15,7 +15,7 @@ import {
 import Navbar from "@/components/landing-page-v2/navbar";
 import Jumbotron from "@/components/landing-page-v2/jumbotron";
 import About from "@/components/landing-page-v2/about";
-import Program from "@/components/landing-page-v2/program";
+import Program from "@/components/landing-page-v2/program/program";
 import Word from "@/components/landing-page-v2/word";
 import RegisterVoluenteer from "@/components/landing-page-v2/register-volounteer";
 import Footer from "@/components/landing-page-v2/footer";

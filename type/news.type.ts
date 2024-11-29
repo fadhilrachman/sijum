@@ -1,12 +1,10 @@
 import { ImgType } from "./shared.type";
 
-export interface ProgramType {
+export interface NewsType {
   id: string;
-  name: string;
-  target_date_donation?: Date;
+  date: Date;
   is_not_target_donaion: boolean;
-  target_nominal: number;
+  program_id: string;
   description?: string;
   thumbnail: ImgType;
-  total_donation: number;
 }

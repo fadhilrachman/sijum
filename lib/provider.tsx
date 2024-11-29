@@ -60,6 +60,10 @@ const Provider = ({ children }: React.PropsWithChildren) => {
               Checkbox: {
                 colorText: CONSTANT_PROVIDER.textColor,
               },
+
+              // Progress: {
+              //   colorText: CONSTANT_PROVIDER.textColor,
+              // },
               Dropdown: {
                 colorBgBase: CONSTANT_PROVIDER.bgColor,
                 // colorText: CONSTANT_PROVIDER.textColor,

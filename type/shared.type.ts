@@ -7,7 +7,12 @@ export interface BaseResponseListType<T> {
   };
 }
 
+export interface BaseResponseDetailType<T> {
+  result: T;
+}
+
 export interface ImgType {
   id: string;
+  name: string;
   url: string;
 }

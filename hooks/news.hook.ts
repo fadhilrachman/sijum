@@ -14,8 +14,9 @@ import {
   BaseResponseListType,
 } from "@/type/shared.type";
 import { ProgramType } from "@/type/program.type";
+import { NewsType } from "@/type/news.type";
 
-export const usePostProgram = () => {
+export const usePostNews = () => {
   const navigate = useRouter();
   const mutation = useMutation<any, Error, FormData>({
     mutationFn: async (body: FormData) => {
@@ -45,11 +46,15 @@ export const usePostProgram = () => {
   return mutation;
 };
 
-export const useGetProgram = (params: { page: number; per_page: number }) => {
-  const query = useQuery<BaseResponseListType<ProgramType>>({
-    queryKey: ["LIST_PROGRAM"],
+export const useGetNews = (params: {
+  page: number;
+  per_page: number;
+  program_id?: string;
+}) => {
+  const query = useQuery<BaseResponseListType<NewsType>>({
+    queryKey: ["LIST_NEWS"],
     queryFn: async () => {
-      const result = await fetcher.get("/program", { params });
+      const result = await fetcher.get("/news", { params });
       return result.data;
     },
   });

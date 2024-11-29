@@ -1,8 +1,12 @@
+"use client";
 import { Button, Card, Divider, Progress } from "antd";
 import React from "react";
 import Title from "../shared/title";
+import { useGetProgram } from "@/hooks/program.hook";
 
 const Program = () => {
+  const { data, isFetching } = useGetProgram({ page: 1, per_page: 1 });
+
   return (
     <div className="px-[120px] py-12 space-y-8  ">
       <Title
