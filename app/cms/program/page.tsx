@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 const Program = () => {
-  const { data, isFetching } = useGetProgram({ page: 1, per_page: 1 });
+  const { data, isFetching } = useGetProgram({ page: 1, per_page: 10 });
 
   const router = useRouter();
   const hanleRoute = (string: string) => {

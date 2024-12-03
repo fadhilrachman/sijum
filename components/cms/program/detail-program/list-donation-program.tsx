@@ -7,7 +7,7 @@ const ListDonationProgram = ({ data }: { data: DonationType[] }) => {
       <div className="space-y-2">
         <div className="divide-y divide-gray-700">
           {data.length == 0 ? (
-            <p className="text-center">Tidak ada donasi</p>
+            <p className="text-center">Belum ada donasi</p>
           ) : (
             data.map((donation, index) => (
               <div key={index} className="flex items-start gap-4  py-3">

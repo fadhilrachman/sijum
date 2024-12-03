@@ -14,7 +14,7 @@ const ListProgram = ({ data }: { data: ProgramType[] }) => {
   return (
     <div className="space-y-4">
       {data.length == 0 ? (
-        <p className="text-center mt-4">Tidak ada program</p>
+        <p className="text-center mt-4">Belum ada program</p>
       ) : (
         data.map((val, key) => {
           return (

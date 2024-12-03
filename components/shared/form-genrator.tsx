@@ -7,6 +7,7 @@ import {
   DatePicker,
   notification,
   Spin,
+  Checkbox,
 } from "antd";
 import { Rule } from "antd/es/form";
 import { FormLayout } from "antd/es/form/Form";
@@ -17,11 +18,14 @@ import React from "react";
 import { TbTrashFilled } from "react-icons/tb";
 
 export interface DataFormType {
-  type: "text" | "email" | "file" | "textarea" | "date";
+  type: "text" | "email" | "file" | "textarea" | "checkbox" | "date" | "number";
   name: string;
   rules?: Rule[];
   label?: string;
   placeholder?: string;
+  disabled?: boolean;
+  readOnly?: boolean;
+  bottomCustom?: React.ReactNode;
 }
 export interface FormGeneratorType {
   form: FormInstance;
@@ -95,7 +99,6 @@ const FormGenerator = ({
                 <div className="px-3 flex items-center text-textColor py-2 border rounded-md border-borderColor">
                   <div className="flex items-center space-x-1 flex-1">
                     <FileFilled />
-
                     <a
                       href={fileUrl.url}
                       target="_blank"
@@ -139,6 +142,18 @@ const FormGenerator = ({
           );
         }
 
+        if (val.type == "checkbox") {
+          return (
+            <Form.Item
+              name={val.name}
+              label={val.label}
+              rules={val?.rules}
+              key={key}
+            >
+              <Checkbox>Checkbox</Checkbox>
+            </Form.Item>
+          );
+        }
         if (val.type == "text") {
           return (
             <Form.Item
@@ -147,8 +162,36 @@ const FormGenerator = ({
               rules={val?.rules}
               key={key}
             >
-              <Input placeholder={val.placeholder} size="large" type="text" />
+              <Input
+                placeholder={val.placeholder}
+                disabled={val?.disabled}
+                readOnly={val?.readOnly}
+                size="large"
+                type="text"
+              />
             </Form.Item>
+          );
+        }
+
+        if (val.type == "number") {
+          return (
+            <>
+              <Form.Item
+                name={val.name}
+                label={val.label}
+                rules={val?.rules}
+                key={key}
+              >
+                <Input
+                  placeholder={val.placeholder}
+                  disabled={val?.disabled}
+                  readOnly={val?.readOnly}
+                  size="large"
+                  type="number"
+                />
+              </Form.Item>
+              {val?.bottomCustom}
+            </>
           );
         }
 
@@ -164,7 +207,9 @@ const FormGenerator = ({
                 className="w-full"
                 placeholder={val.placeholder || "Pilih tanggal"}
                 size="large"
+                disabled={val.disabled}
               />
+              {/* {val?.bottomCustom} */}
             </Form.Item>
           );
         }
@@ -176,7 +221,12 @@ const FormGenerator = ({
               rules={val?.rules}
               key={key}
             >
-              <TextArea size="large" placeholder={val.placeholder} />
+              <TextArea
+                size="large"
+                placeholder={val.placeholder}
+                disabled={val?.disabled}
+                readOnly={val?.readOnly}
+              />
             </Form.Item>
           );
         }

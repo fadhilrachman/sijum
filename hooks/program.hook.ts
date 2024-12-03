@@ -13,12 +13,11 @@ import {
   BaseResponseDetailType,
   BaseResponseListType,
 } from "@/type/shared.type";
-import { ProgramType } from "@/type/program.type";
+import { ProgramPostType, ProgramType } from "@/type/program.type";
 
 export const usePostProgram = () => {
-  const navigate = useRouter();
-  const mutation = useMutation<any, Error, FormData>({
-    mutationFn: async (body: FormData) => {
+  const mutation = useMutation<any, Error, ProgramPostType>({
+    mutationFn: async (body: ProgramPostType) => {
       const response = await fetcher.post("/program", body);
       return response.data;
     },
@@ -28,9 +27,7 @@ export const usePostProgram = () => {
     const status = mutation.status;
     if (status == "success") {
       const { data } = mutation;
-      notification.success({ message: "Login Sukses" });
-      Cookie.set(process.env.COOKIE_NAME || "", data.data.access_token);
-      navigate.push("/cms/home");
+      notification.success({ message: data.message });
     }
 
     if (status == "error") {
@@ -41,7 +38,6 @@ export const usePostProgram = () => {
       notification.error({ message: message });
     }
   }, [mutation.status]);
-
   return mutation;
 };
 

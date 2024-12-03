@@ -25,7 +25,6 @@ const ProgramDetail = () => {
   const handleRoute = (href: string) => {
     router.push(href);
   };
-  console.log({ dataProgram });
 
   return (
     <LayoutProgramDetail>
@@ -37,7 +36,8 @@ const ProgramDetail = () => {
           icon={<ArrowLeftOutlined />}
           shape="circle"
           onClick={() => {
-            handleBack();
+            // handleBack();
+            handleRoute("/cms/program");
           }}
           size="middle"
         />

@@ -42,7 +42,11 @@ export const usePostDonation = () => {
   return mutation;
 };
 
-export const useGetDonation = (params: { page: number; per_page: number }) => {
+export const useGetDonation = (params: {
+  page: number;
+  per_page: number;
+  program_id?: string;
+}) => {
   const query = useQuery<BaseResponseListType<DonationType>>({
     queryKey: ["LIST_DONATION"],
     queryFn: async () => {

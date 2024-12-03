@@ -2,6 +2,7 @@ import {
   useMutation,
   UseMutationOptions,
   useQuery,
+  useQueryClient,
 } from "@tanstack/react-query";
 import { fetcher } from "@/lib/fetcher";
 import { useEffect } from "react";
@@ -59,14 +60,34 @@ export const useGetNews = (params: {
   return query;
 };
 
-export const useGetProgramDetail = ({ program_id }: { program_id: string }) => {
-  const query = useQuery<BaseResponseDetailType<ProgramType>>({
-    queryKey: ["LIST_PROGRAM_DETAIL"],
-    queryFn: async () => {
-      const result = await fetcher.get(`/program/${program_id}`);
-      return result.data;
+export const useDeleteNews = () => {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation<any, Error, string>({
+    mutationFn: async (id: string) => {
+      const response = await fetcher.delete(`/news/${id}`);
+      return response.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["LIST_NEWS"] }); // Menggunakan invalidateQueries untuk memicu ulang query
     },
   });
 
-  return query;
+  useEffect(() => {
+    const status = mutation.status;
+    if (status == "success") {
+      const { data } = mutation;
+      notification.success({ message: data.message });
+    }
+
+    if (status == "error") {
+      const error = mutation.error as AxiosError<any>;
+      console.log({ error });
+      const message = error.response?.data.message || "Gagal login";
+
+      notification.error({ message: message });
+    }
+  }, [mutation.status]);
+
+  return mutation;
 };

@@ -3,9 +3,15 @@ import { Skeleton } from "antd";
 import React from "react";
 import ListDonation from "../../donation/list-donation";
 import ListDonationProgram from "./list-donation-program";
+import { useParams } from "next/navigation";
 
 const DonationProgram = () => {
-  const { data, isFetching } = useGetDonation({ page: 1, per_page: 10 });
+  const { program_id } = useParams();
+  const { data, isFetching } = useGetDonation({
+    page: 1,
+    per_page: 10,
+    program_id: program_id as string,
+  });
 
   return (
     <div className="space-y-4">
