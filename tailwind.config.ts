@@ -15,6 +15,8 @@ const config: Config = {
         primary: "#008080",
         secondary: "#EAB308",
         third: "#2E4747",
+        textColor: "#9CA3AF",
+        borderColor: "#4B5563",
       },
     },
   },

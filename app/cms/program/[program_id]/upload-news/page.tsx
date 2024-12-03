@@ -5,25 +5,28 @@ import { Button, Form, Input, Upload } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import BaseButton from "@/components/shared/base-button";
 import { ArrowLeftOutlined, PlusOutlined } from "@ant-design/icons";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import FormGenerator from "@/components/shared/form-genrator";
+import { usePostNews } from "@/hooks/news.hook";
 
 const UploadNews = () => {
   const router = useRouter();
-
+  const { mutateAsync, status } = usePostNews();
   const [form] = Form.useForm();
-  const normFile = (e: any) => {
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
-  };
+  const { program_id } = useParams();
   const handleBack = () => {
     router.back();
   };
-  const handleSubmit = (value: any) => {
+  const handleSubmit = async (value: any) => {
     const formatedDescription = value.description.replace(/\n/g, "<br/>");
-
-    console.log({ formatedDescription });
+    const payload = {
+      date: value.date.toDate(),
+      description: formatedDescription,
+      thumbnail_img_id: value?.thumbnail?.id,
+      program_id,
+    };
+    await mutateAsync(payload);
+    router.push(`/cms/program/${program_id}`);
   };
 
   return (
@@ -43,51 +46,51 @@ const UploadNews = () => {
             Tambahkan Berita di Program "Donasi Jumat"
           </h3>
         </div>
-        <Form
+        <FormGenerator
           form={form}
-          name="validateOnly"
-          layout="vertical"
-          onFinish={handleSubmit}
-          className="mt-4"
+          onSubmit={(val) => {
+            handleSubmit(val);
+          }}
+          dataForm={[
+            {
+              name: "thumbnail",
+              label: "Thumbnail",
+              type: "file",
+              placeholder: "Pilih tanggal",
+            },
+            {
+              name: "date",
+              label: "Tanggal",
+              type: "date",
+              placeholder: "Pilih tanggal",
+              rules: [
+                {
+                  required: true,
+                  message: "Field ini wajib diisi",
+                },
+              ],
+            },
+            {
+              name: "description",
+              type: "textarea",
+              label: "Deskripsi",
+              rules: [
+                {
+                  required: true,
+                  message: "Field ini wajib diisi",
+                },
+              ],
+            },
+          ]}
           id="form"
-        >
-          <Form.Item
-            label="Upload Foto"
-            valuePropName="fileList"
-            rules={[
-              {
-                required: true,
-                message: "Field ini harus diisi",
-              },
-            ]}
-            getValueFromEvent={normFile}
-          >
-            <Upload
-              action="/upload.do"
-              multiple={false}
-              listType="picture-card"
-            >
-              <button style={{ border: 0, background: "none" }} type="button">
-                <PlusOutlined />
-                <div style={{ marginTop: 8 }}>Upload</div>
-              </button>
-            </Upload>
-          </Form.Item>
-
-          <Form.Item name="target_donation" label="Tanggal">
-            <Input placeholder="Nama" size="large" type="date" />
-          </Form.Item>
-
-          <Form.Item name="description" label="Deskripsi">
-            <TextArea size="large" />
-          </Form.Item>
-        </Form>
+        />
         <BaseButton
           type="primary"
           size="large"
           htmlType="submit"
           form="form"
           className="w-full"
+          loading={status == "pending"}
         >
           Submit
         </BaseButton>

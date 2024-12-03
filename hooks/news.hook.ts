@@ -14,13 +14,12 @@ import {
   BaseResponseListType,
 } from "@/type/shared.type";
 import { ProgramType } from "@/type/program.type";
-import { NewsType } from "@/type/news.type";
+import { NewsPostType, NewsType } from "@/type/news.type";
 
 export const usePostNews = () => {
-  const navigate = useRouter();
-  const mutation = useMutation<any, Error, FormData>({
-    mutationFn: async (body: FormData) => {
-      const response = await fetcher.post("/program", body);
+  const mutation = useMutation<any, Error, NewsPostType>({
+    mutationFn: async (body: NewsPostType) => {
+      const response = await fetcher.post("/news", body);
       return response.data;
     },
   });
@@ -29,9 +28,7 @@ export const usePostNews = () => {
     const status = mutation.status;
     if (status == "success") {
       const { data } = mutation;
-      notification.success({ message: "Login Sukses" });
-      Cookie.set(process.env.COOKIE_NAME || "", data.data.access_token);
-      navigate.push("/cms/home");
+      notification.success({ message: data.message });
     }
 
     if (status == "error") {

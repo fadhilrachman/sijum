@@ -8,3 +8,9 @@ export interface NewsType {
   description?: string;
   thumbnail: ImgType;
 }
+
+export interface NewsPostType {
+  date: Date;
+  thumbnail_img_id: string;
+  description?: string;
+}
