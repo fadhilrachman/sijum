@@ -5,7 +5,8 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 import BaseButton from "@/components/shared/base-button";
 import { EllipsisOutlined, MoreOutlined } from "@ant-design/icons";
-const NewsProgram = () => {
+
+const NewsProgram = ({ isPublic = false }: { isPublic?: boolean }) => {
   const { program_id } = useParams();
   const { mutateAsync, status } = useDeleteNews();
   const [perPage, setPerPage] = useState(3);
@@ -58,37 +59,40 @@ const NewsProgram = () => {
             <h3 className="font-semibold">
               {moment(val.date).format("D MMMM YYYY")}
             </h3>
-            <Dropdown
-              menu={{
-                items: [
-                  {
-                    label: <div>Hapus</div>,
-                    key: val.id,
-                    onClick: (val) => {
-                      handleTrigerModalDelete(val.key);
+            {!isPublic && (
+              <Dropdown
+                menu={{
+                  items: [
+                    {
+                      label: <div>Hapus</div>,
+                      key: val.id,
+                      onClick: (val) => {
+                        handleTrigerModalDelete(val.key);
+                      },
                     },
-                  },
-                  {
-                    label: <div>Edit</div>,
-                    key: val.id,
-                    // onClick: (val) => {
-                    //   handleTrigerModalDelete(val.key);
-                    // },
-                  },
-                ],
-              }}
-              trigger={["click"]}
-            >
-              <Button
-                // variant="text"
-                type="text"
-                size="large"
-                shape="circle"
-                icon={
-                  <MoreOutlined className="text-gray-400 !text-2xl font-extrabold" />
-                }
-              />
-            </Dropdown>
+                    {
+                      label: <div>Edit</div>,
+                      key: val.id,
+                      // onClick: (val) => {
+                      //   handleTrigerModalDelete(val.key);
+                      // },
+                    },
+                  ],
+                }}
+                trigger={["click"]}
+              >
+                <Button
+                  // variant="text"
+                  type="text"
+                  size="large"
+                  shape="circle"
+                  icon={
+                    <MoreOutlined className="text-gray-400 !text-2xl font-extrabold" />
+                  }
+                />
+              </Dropdown>
+            )}
+
             {/* <EllipsisOutlined className="text-3xl" /> */}
           </div>
 
