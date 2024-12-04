@@ -1,6 +1,5 @@
 // import type { Metadata } from "next";
 // import localFont from "next/font/local";
-import { Nunito_Sans, Pacifico } from "next/font/google";
 import "./globals.scss";
 import "../styles/overide.css";
 

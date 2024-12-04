@@ -29,7 +29,7 @@ const ListAdmin = ({ data }: { data: AdminType[] }) => {
             </BaseButton>
             <BaseButton
               loading={status == "pending"}
-              type="secondary"
+              // type="secondary"
               onClick={() => {
                 handleDeleteAdmin(id);
               }}
