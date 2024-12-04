@@ -30,7 +30,7 @@ const Jumbotron = () => {
             <BaseButton type="primary" size="large">
               Ikut Donasi
             </BaseButton>
-            <BaseButton type="secondary" size="large">
+            <BaseButton type="primary" size="large">
               Hubungi Kami
             </BaseButton>
           </div>
