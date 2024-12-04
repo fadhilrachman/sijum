@@ -54,7 +54,7 @@ const LayoutProgramDetail: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <div className="bg-gray-900">
-      <Layout className="max-w-[440px] relative rounded-sm min-h-[100vh] m-auto">
+      <Layout className="max-w-[480px] relative rounded-sm min-h-[100vh] m-auto">
         <Content>
           <Layout className=" relative min-h-[100vh] text-gray-400 bg-gray-800  pb-20 space-y-2">
             {children}

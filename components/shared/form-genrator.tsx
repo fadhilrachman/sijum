@@ -26,6 +26,7 @@ export interface DataFormType {
   disabled?: boolean;
   readOnly?: boolean;
   bottomCustom?: React.ReactNode;
+  addonBefore?: React.ReactNode;
 }
 export interface FormGeneratorType {
   form: FormInstance;
@@ -186,6 +187,7 @@ const FormGenerator = ({
                   placeholder={val.placeholder}
                   disabled={val?.disabled}
                   readOnly={val?.readOnly}
+                  addonBefore={val.addonBefore}
                   size="large"
                   type="number"
                 />

@@ -90,7 +90,7 @@ const NewsProgram = ({ isPublic = false }: { isPublic?: boolean }) => {
                     <MoreOutlined className="text-gray-400 !text-2xl font-extrabold" />
                   }
                 />
-              </Dropdown>
+              </Dropdown> 
             )}
 
             {/* <EllipsisOutlined className="text-3xl" /> */}

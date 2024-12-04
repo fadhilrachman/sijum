@@ -8,6 +8,7 @@ import { ArrowLeftOutlined, CameraOutlined } from "@ant-design/icons";
 import { Button, Divider } from "antd";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
+import { FaHandHoldingUsd } from "react-icons/fa";
 
 const DetailProgram = () => {
   const router = useRouter();
@@ -19,7 +20,7 @@ const DetailProgram = () => {
   };
   return (
     <div className="bg-gray-900">
-      <div className=" max-w-[440px] relative rounded-sm min-h-[100vh] m-auto">
+      <div className=" max-w-[480px] relative rounded-sm min-h-[100vh] m-auto">
         <div className="relative min-h-[100vh] text-gray-400 bg-gray-800  pb-20 space-y-2">
           <div className="relative">
             {" "}
@@ -50,7 +51,7 @@ const DetailProgram = () => {
               <DonationProgram />
             </div>
           </div>
-          <div className="fixed flex bg-gray-800   border-t border-gray-600 bottom-0 w-[440px]  gap-x-4 py-2 px-2 md:px-8">
+          <div className="fixed flex bg-gray-800   border-t border-gray-600 bottom-0 w-[480px]  gap-x-4 py-2 px-2 md:px-8">
             {/* <Button size="large" icon={<EditOutlined />}>
               Edit Program
             </Button> */}
@@ -59,9 +60,9 @@ const DetailProgram = () => {
               className="w-full"
               size="large"
               onClick={() => {
-                // handleRoute(`/cms/program/${program_id}/upload-news`);
+                handleRoute(`/program/${program_id}/donation`);
               }}
-              icon={<CameraOutlined />}
+              icon={<FaHandHoldingUsd />}
             >
               Donasi
             </Button>

@@ -47,7 +47,7 @@ const LayoutCms: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <div className="bg-gray-900 ">
-      <Layout className="max-w-[440px] relative rounded-sm min-h-[100vh] m-auto">
+      <Layout className="max-w-[480px] relative rounded-sm min-h-[100vh] m-auto">
         <Content>
           <Layout className="py-6 min-h-[100vh] px-2 md:px-4 pb-20 space-y-2 text-gray-400 bg-gray-800">
             <div className="flex items-center space-x-4 mb-4">
@@ -64,7 +64,7 @@ const LayoutCms: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </h3>
             {children}
           </Layout>
-          <div className="fixed grid grid-cols-4  bottom-0 w-[440px] bg-gray-800 text-gray-400 gap-x-4 py-2 px-2 md:px-8">
+          <div className="fixed grid grid-cols-4  bottom-0 w-[480px] bg-gray-800 text-gray-400 gap-x-4 py-2 px-2 md:px-8">
             {items.map((val, key) => {
               return (
                 <div

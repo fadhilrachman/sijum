@@ -57,7 +57,7 @@ const ProgramDetail = () => {
           <DonationProgram />
         </div>
       </div>
-      <div className="fixed flex bg-gray-800   border-t border-gray-600 bottom-0 w-[440px]  gap-x-4 py-2 px-2 md:px-8">
+      <div className="fixed flex bg-gray-800   border-t border-gray-600 bottom-0 w-[480px]  gap-x-4 py-2 px-2 md:px-8">
         {/* <Button size="large" icon={<EditOutlined />}>
               Edit Program
             </Button> */}
