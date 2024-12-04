@@ -14,9 +14,7 @@ const BaseButton = ({ ...props }: Props) => {
   return (
     <Button
       {...props}
-      className={` opacity-95 ${
-        props.type && (customTypeButton[props?.type] as string)
-      } ${props.className}`}
+      className={` opacity-95 ${props.type} ${props.className}`}
     >
       {props.children}
     </Button>
