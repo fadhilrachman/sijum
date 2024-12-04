@@ -45,9 +45,9 @@ const About = () => {
               Bersama, kita wujudkan kepedulian dan kebahagiaan untuk sesama
             </p>
             {/* <!-- List --> */}
-            <div className="space-y-4 flex !mt-6 border-t border-gray-700 pt-3">
-              <div className="flex items-center space-x-4">
-                <div className="h-12 w-12 text-white rounded-full bg-primary flex justify-center items-center">
+            <div className="space-y-4 flex items-center !mt-6 border-t border-gray-700 pt-3">
+              <div className="flex items-center  space-x-4">
+                <div className="h-6 md:h-12 w-6 md:w-12 text-primary md:text-white rounded-full md:bg-primary flex justify-center items-center">
                   <FaMosque />
                 </div>
                 <div className="">
@@ -58,7 +58,7 @@ const About = () => {
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <div className="h-12 w-12 rounded-full bg-secondary text-white flex justify-center items-center">
+                <div className="h-6 md:h-12 w-6 md:w-12 rounded-full md:bg-secondary text-secondary md:text-white flex justify-center items-center">
                   <FaBowlRice />
                 </div>
                 <div className="">
@@ -89,15 +89,15 @@ const About = () => {
 
             {/* <!-- List --> */}
           </div>
-          <div className=" border-t border-gray-700 pt-4 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
+          <div className=" border-t border-gray-700 pt-4 space-y-6 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
             {listHowToHelp.map((val, key) => {
               return (
                 <div key={key} className="space-y-2">
-                  <val.icon className="text-primary h-16 w-16" />
-                  <h3 className="mb-2 text-2xl font-bold dark:text-white">
+                  <val.icon className="text-primary h-8 md:h-16 w-8 md:w-16" />
+                  <h3 className="mb-2 text-lg md:text-2xl font-bold dark:text-white">
                     {val.label}
                   </h3>
-                  <p className="font-light text-gray-500 dark:text-gray-400">
+                  <p className="font-light text-gray-500  text-sm md:text-base dark:text-gray-400">
                     {val.description}
                   </p>
                 </div>

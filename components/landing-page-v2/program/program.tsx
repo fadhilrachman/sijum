@@ -17,9 +17,9 @@ const Program = () => {
             Program Kami
           </h2>
 
-          <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            Our rigorous security and compliance standards are at the heart of
-            all we do. We work tirelessly to protect you and your customers.
+          <p className="font-light text-gray-500 text-sm md:text-xl dark:text-gray-400">
+            Setiap kontribusi Anda akan membawa perubahan nyata, menciptakan
+            senyuman, dan memberikan harapan baru.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -35,14 +35,16 @@ const Program = () => {
             />
           ))}
         </div>
-        <p
-          className="text-center text-white font-bold cursor-pointer"
-          onClick={() => {
-            setPerPage((p) => p + 3);
-          }}
-        >
-          Lihat Lainya
-        </p>
+        {(data?.pagination?.total_data as number) > perPage && (
+          <p
+            className="text-center text-white font-bold cursor-pointer"
+            onClick={() => {
+              setPerPage((p) => p + 3);
+            }}
+          >
+            Lihat Lainya
+          </p>
+        )}
       </div>
     </section>
   );
