@@ -23,7 +23,7 @@ const Program = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {data?.result.map((item) => (
+          {data?.result.map((item, key) => (
             <CardProgram
               name={item.name as string}
               description={item.description}
@@ -31,6 +31,7 @@ const Program = () => {
               totalDonation={item.total_donation}
               target_nominal={item.target_nominal}
               id={item.id}
+              key={key}
             />
           ))}
         </div>

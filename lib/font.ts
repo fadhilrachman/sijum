@@ -1,4 +1,4 @@
-import { Nunito, Roboto, Pacifico, Nunito_Sans } from "next/font/google";
+import { Roboto, Pacifico, Nunito_Sans } from "next/font/google";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
