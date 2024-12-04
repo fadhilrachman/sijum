@@ -1,4 +1,6 @@
+import { formatRupiah } from "@/lib/utils";
 import { DonationType } from "@/type/donation.type";
+import moment from "moment";
 import React from "react";
 
 const ListDonationProgram = ({ data }: { data: DonationType[] }) => {
@@ -27,7 +29,8 @@ const ListDonationProgram = ({ data }: { data: DonationType[] }) => {
                     </div>
                     <div className="flex flex-col items-end">
                       <span className="text-xs text-gray-400 mt-1">
-                        {/* {donation.time} */}7 menit yg lalu
+                        {/* {donation.time} */}
+                        {moment(donation.created_at).fromNow()}
                       </span>
                     </div>
                   </div>
@@ -35,7 +38,7 @@ const ListDonationProgram = ({ data }: { data: DonationType[] }) => {
                     Pesan: {donation.message}
                   </p>
                   <p className="text-sm font-medium text-white mt-1">
-                    {donation.donation}
+                    {formatRupiah(donation.donation)}
                   </p>
                 </div>
               </div>

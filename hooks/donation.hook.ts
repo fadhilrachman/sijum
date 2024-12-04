@@ -10,13 +10,13 @@ import * as Cookie from "cookies-js";
 import { useRouter } from "next/navigation";
 import { notification } from "antd";
 import { BaseResponseListType } from "@/type/shared.type";
-import { DonationType } from "@/type/donation.type";
+import { DonationPostType, DonationType } from "@/type/donation.type";
 
-export const usePostDonation = () => {
+export const usePostDonation = ({ program_id }: { program_id: string }) => {
   const navigate = useRouter();
-  const mutation = useMutation<any, Error, FormData>({
-    mutationFn: async (body: FormData) => {
-      const response = await fetcher.post("/login", body);
+  const mutation = useMutation<any, Error, DonationPostType>({
+    mutationFn: async (body: DonationPostType) => {
+      const response = await fetcher.post(`/donation/${program_id}`, body);
       return response.data;
     },
   });
@@ -25,9 +25,7 @@ export const usePostDonation = () => {
     const status = mutation.status;
     if (status == "success") {
       const { data } = mutation;
-      notification.success({ message: "Login Sukses" });
-      Cookie.set(process.env.COOKIE_NAME || "", data.data.access_token);
-      navigate.push("/cms/home");
+      notification.success({ message: data.message });
     }
 
     if (status == "error") {

@@ -1,5 +1,6 @@
 "use client";
 import FormGenerator, { DataFormType } from "@/components/shared/form-genrator";
+import { usePostDonation } from "@/hooks/donation.hook";
 import { useGetProgramDetail } from "@/hooks/program.hook";
 import { formatRupiah } from "@/lib/utils";
 import { ArrowLeftOutlined, CheckCircleFilled } from "@ant-design/icons";
@@ -10,13 +11,16 @@ import { FaHandHoldingUsd } from "react-icons/fa";
 const listNominalDonation = [50000, 100000, 300000, 500000, 1000000, "other"];
 
 const Donation = () => {
+  const { program_id } = useParams();
+  const { mutateAsync, status } = usePostDonation({
+    program_id: program_id as string,
+  });
   const [form] = Form.useForm();
 
   const router = useRouter();
   const [choosedDonation, setChoosedDonation] = useState<string | number>(
     50000
   );
-  const { program_id } = useParams();
   const { data } = useGetProgramDetail({ program_id: program_id as string });
   const dataFinally = data?.result;
   const handleRoute = (href: string) => {
@@ -25,39 +29,53 @@ const Donation = () => {
 
   const [dataForm, setDataForm] = useState<DataFormType[]>([
     {
-      name: "name",
+      name: "user_name",
       type: "text",
       label: "Nama",
       placeholder: "Nama anda",
+      rules: [
+        {
+          required: true,
+          message: "Field ini harus diisi",
+        },
+      ],
     },
 
     {
-      name: "target_date_donation",
-      label: "Tanggal Target Donasi Terkumpul",
-      type: "date",
-      placeholder: "Pilih tanggal",
-      //   disabled: isTargetDateDonation as boolean,
-      bottomCustom: (
-        <Checkbox
-          className="mt-4"
-          //   checked={isTargetDateDonation as boolean}
-          onClick={() => {
-            form.setFieldValue("target_date_donation", undefined);
-            // form.set
-            // setIsTargetDateDonation((p) => !p);
-          }}
-        >
-          Jangan tentukan nominal
-        </Checkbox>
-      ),
+      name: "phone",
+      type: "text",
+      label: "Nomor Hp",
+      placeholder: "Nomor Hp anda",
+      addonBefore: "+62",
+      rules: [
+        {
+          required: true,
+          message: "Field ini harus diisi",
+        },
+      ],
     },
+
     {
-      name: "description",
+      name: "message",
       type: "textarea",
       label: "Pesan",
       placeholder: "Berikan pesan atau doa disini (optional)",
     },
   ]);
+
+  const handleSubmit = async (val: any) => {
+    const phone = val.phone[0] == "0" ? val.phone : `0${val.phone}`;
+    const payload = {
+      message: val.message,
+      user_name: val.user_name,
+      phone,
+      donation: choosedDonation as number,
+    };
+    console.log({ payload });
+
+    await mutateAsync(payload);
+    handleRoute(`/program/${program_id}`);
+  };
 
   useEffect(() => {
     if (choosedDonation == "other") {
@@ -65,6 +83,7 @@ const Donation = () => {
         {
           name: "donation",
           type: "number",
+          placeholder: "Berikan donasi terbaik disini",
           label: "Nominal Donasi",
           addonBefore: "Rp",
           bottomCustom: <Divider className="bg-gray-600" />,
@@ -137,13 +156,13 @@ const Donation = () => {
             </div>
             {choosedDonation != "other" && <Divider className="bg-gray-600" />}
             <FormGenerator
-              //   disabled={status == "pending"}
               form={form}
               className="mt-4"
+              disabled={status == "pending"}
               onSubmit={(val) => {
                 console.log({ val });
 
-                // handleSubmit(val);
+                handleSubmit(val);
               }}
               dataForm={dataForm}
               id="form"
@@ -153,12 +172,18 @@ const Donation = () => {
             <Button
               type="primary"
               className="w-full"
+              htmlType="submit"
+              form="form"
               size="large"
-              onClick={() => {
-                handleRoute(`/program/${program_id}/donation`);
-              }}
+              loading={status == "pending"}
+              // onClick={() => {
+              //   handleRoute(`/program/${program_id}/donation`);
+              // }}
             >
-              Donasi {formatRupiah(choosedDonation as number)}
+              Donasi{" "}
+              {choosedDonation != "other"
+                ? formatRupiah(choosedDonation as number)
+                : Form.useWatch("donation", form)}
             </Button>
           </div>
         </div>

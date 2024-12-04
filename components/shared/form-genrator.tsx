@@ -167,6 +167,7 @@ const FormGenerator = ({
                 placeholder={val.placeholder}
                 disabled={val?.disabled}
                 readOnly={val?.readOnly}
+                addonBefore={val.addonBefore}
                 size="large"
                 type="text"
               />
