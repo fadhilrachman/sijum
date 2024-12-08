@@ -10,7 +10,7 @@ const Program = () => {
   const [perPage, setPerPage] = useState(3);
   const { data, isFetching } = useGetProgram({ page: 1, per_page: perPage });
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-gray-900" id="program">
       <div className="items-center space-y-4 lg:space-y-6 max-w-screen-xl px-4 py-8 mx-auto  lg:py-24 lg:px-6">
         <div className="col-span-2 ">
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">

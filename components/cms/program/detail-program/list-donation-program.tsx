@@ -1,7 +1,8 @@
 import { formatRupiah } from "@/lib/utils";
 import { DonationType } from "@/type/donation.type";
-import moment from "moment";
+import moment from "moment-timezone";
 import React from "react";
+import "moment/locale/id";
 
 const ListDonationProgram = ({ data }: { data: DonationType[] }) => {
   return (
@@ -29,8 +30,9 @@ const ListDonationProgram = ({ data }: { data: DonationType[] }) => {
                     </div>
                     <div className="flex flex-col items-end">
                       <span className="text-xs text-gray-400 mt-1">
-                        {/* {donation.time} */}
-                        {moment(donation.created_at).fromNow()}
+                        {moment(donation.created_at)
+                          .tz("Asia/Jakarta")
+                          .fromNow()}
                       </span>
                     </div>
                   </div>

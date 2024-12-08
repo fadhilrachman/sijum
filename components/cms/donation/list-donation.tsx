@@ -1,37 +1,10 @@
 import { DonationType } from "@/type/donation.type";
 import React from "react";
+import "moment/locale/id";
+import moment from "moment-timezone";
+import { formatRupiah } from "@/lib/utils";
 
 const ListDonation = ({ data }: { data: DonationType[] }) => {
-  const donations = [
-    {
-      name: "Fadhil Rahman",
-      phone: "+6288102207883",
-      message: "Sehat Selalu kak",
-      amount: "Rp 20.000",
-      time: "7 menit lalu",
-    },
-    {
-      name: "Fadhil Rahman",
-      phone: "+6288102207883",
-      message: "Sehat Selalu kak",
-      amount: "Rp 20.000",
-      time: "7 menit lalu",
-    },
-    {
-      name: "Fadhil Rahman",
-      phone: "+6288102207883",
-      message: "Sehat Selalu kak",
-      amount: "Rp 20.000",
-      time: "7 menit lalu",
-    },
-    {
-      name: "Fadhil Rahman",
-      phone: "+6288102207883",
-      message: "Sehat Selalu kak",
-      amount: "Rp 20.000",
-      time: "7 menit lalu",
-    },
-  ];
   return (
     <div className="  px-2 md:px-4 py-4 rounded-md">
       <div className="space-y-2">
@@ -60,7 +33,9 @@ const ListDonation = ({ data }: { data: DonationType[] }) => {
                         Donasi Sijum
                       </button>
                       <span className="text-xs text-gray-400 mt-1">
-                        {/* {donation.time} */}7 menit yg lalu
+                        {moment(donation.created_at)
+                          .tz("Asia/Jakarta")
+                          .fromNow()}
                       </span>
                     </div>
                   </div>
@@ -68,7 +43,7 @@ const ListDonation = ({ data }: { data: DonationType[] }) => {
                     Pesan: {donation.message}
                   </p>
                   <p className="text-sm font-medium text-white mt-1">
-                    {donation.donation}
+                    {formatRupiah(donation.donation)}
                   </p>
                 </div>
               </div>

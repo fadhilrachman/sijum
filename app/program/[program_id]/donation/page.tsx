@@ -74,7 +74,6 @@ const Donation = () => {
     console.log({ payload });
 
     await mutateAsync(payload);
-    handleRoute(`/program/${program_id}`);
   };
 
   useEffect(() => {
@@ -96,6 +95,21 @@ const Donation = () => {
     }
   }, [choosedDonation]);
 
+  useEffect(() => {
+    const snapScript = "https://app.sandbox.midtrans.com/snap/snap.js";
+    const script = document.createElement("script");
+    script.src = snapScript;
+    script.setAttribute(
+      "data-client-key",
+      process.env.MIDTRANS_CLIENT_KEY as string
+    );
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild;
+    };
+  }, []);
   return (
     <div className="bg-gray-900">
       <div className=" max-w-[480px] relative rounded-sm min-h-[100vh] m-auto">
