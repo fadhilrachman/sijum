@@ -18,8 +18,8 @@ const Word = () => {
           </svg>
           <blockquote>
             <p className="text-lg ont-medium text-gray-900 md:text-2xl dark:text-white">
-              "Landwind is just awesome. It contains tons of predesigned
-              components and pages starting from login screen ."
+              "Berbagi nasi di Jumat berkah, wujudkan senyuman dan kebahagiaan
+              bersama"
             </p>
           </blockquote>
           <figcaption className="flex items-center justify-center mt-6 space-x-3">
@@ -30,10 +30,10 @@ const Word = () => {
             />
             <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
               <div className="pr-3 font-medium text-gray-900 dark:text-white">
-                Micheal Gough
+                Fadhil Rahman
               </div>
               <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
-                CEO at Google
+                Founder of SiJum
               </div>
             </div>
           </figcaption>
