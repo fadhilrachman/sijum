@@ -18,27 +18,26 @@ export const usePostDonation = ({ program_id }: { program_id: string }) => {
     mutationFn: async (body: DonationPostType) => {
       const response = await fetcher.post(`/donation/${program_id}`, body);
 
-      window.snap.pay(response.data.token, {
-        onSuccess: function (result: any) {
-          console.log("Transaction successful!", result);
-          navigate.push(`donation/asdasdksad`);
-          // alert("Payment successful!");
-          // Redirect ke halaman sukses atau lakukan aksi lain
-        },
-        onPending: function (result: any) {
-          console.log("Transaction is pending", result);
-          // alert("Payment is pending. Please complete the payment.");
-        },
-        onError: function (result: any) {
-          console.error("Transaction failed", result);
-          notification.error({ type: "error", message: "Donasi Gagal" });
-          // alert("Payment failed. Please try again.");
-        },
-        onClose: function () {
-          console.log("Payment popup closed.");
-          // alert("Payment popup was closed without completing the payment.");
-        },
-      });
+      // window.snap.pay(response.data.token, {
+      //   onSuccess: function (result: any) {
+      //     navigate.push(`donation/asdasdksad`);
+      //     // alert("Payment successful!");
+      //     // Redirect ke halaman sukses atau lakukan aksi lain
+      //   },
+      //   onPending: function (result: any) {
+      //     console.log("Transaction is pending", result);
+      //     // alert("Payment is pending. Please complete the payment.");
+      //   },
+      //   onError: function (result: any) {
+      //     console.error("Transaction failed", result);
+      //     notification.error({ type: "error", message: "Donasi Gagal" });
+      //     // alert("Payment failed. Please try again.");
+      //   },
+      //   onClose: function () {
+      //     console.log("Payment popup closed.");
+      //     // alert("Payment popup was closed without completing the payment.");
+      //   },
+      // });
       return response.data;
     },
   });
